@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MobileSigninComponent } from './mobile-signin.component';
+import { MobileSignInComponent } from './mobile-sign-in.component';
 
-describe('MobileSigninComponent', () => {
-  let component: MobileSigninComponent;
-  let fixture: ComponentFixture<MobileSigninComponent>;
+describe('MobileSignInComponent', () => {
+  let component: MobileSignInComponent;
+  let fixture: ComponentFixture<MobileSignInComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MobileSigninComponent]
+      imports: [MobileSignInComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(MobileSigninComponent);
+    fixture = TestBed.createComponent(MobileSignInComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
