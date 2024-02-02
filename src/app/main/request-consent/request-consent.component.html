@@ -1,0 +1,154 @@
+<div class="grid">
+    <div class="col-12 md:col-12">
+        <div class="card">
+			<div class="flex justify-content-between mb-2">
+				<h3>Consents of Dinesh Choudhary</h3>
+				<div class="flex">
+					<p-button label="Add New Consent" [outlined]="true" severity="secondary" (onClick)="addConsent()"></p-button>
+				</div>
+			</div>
+            
+            <p-table #dt1 [value]="patientConsentList" dataKey="id" [rows]="10"  [rowHover]="true" styleClass="p-datatable-gridlines" [paginator]="true" [globalFilterFields]="['name','country.name','representative.name','status']" responsiveLayout="scroll">
+				<ng-template pTemplate="caption">
+					<div class="flex justify-content-end flex-column sm:flex-row">
+						<!-- <button pButton label="Clear" class="p-button-outlined mb-2" icon="pi pi-filter-slash" ></button> -->
+						<span class="p-input-icon-left mb-2">
+							<i class="pi pi-search"></i>
+							<input pInputText type="text" #filter  placeholder="Search Keyword" class="w-full p-inputtext"/>
+						</span>
+					</div>
+				</ng-template>
+				<ng-template pTemplate="header">
+					<tr>
+						<th style="min-width: 12rem">
+							<div class="flex justify-content-between align-items-center">
+								Patient Name
+							</div>
+						</th>
+						<th style="min-width: 12rem">
+							<div class="flex justify-content-between align-items-center">
+								Abha Address
+							</div>
+						</th>
+						<th style="min-width: 14rem">
+							<div class="flex justify-content-between align-items-center">
+								Consent Status
+							</div>
+						</th>
+						<th style="min-width: 10rem">
+							<div class="flex justify-content-between align-items-center">
+								Consent Created On
+							</div>
+						</th>
+						<th style="min-width: 10rem">
+							<div class="flex justify-content-between align-items-center">
+								Consent Granted On
+							</div>
+						</th>
+						<th style="min-width: 12rem">
+							<div class="flex justify-content-between align-items-center">
+								Consent Expiry On
+							</div>
+						</th>
+						<th style="min-width: 12rem">
+							<div class="flex justify-content-between align-items-center">
+								Consent Revoked On
+							</div>
+						</th>
+						<th style="min-width: 3rem">
+
+						</th>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="body" let-patient>
+					<tr>
+						<td>
+							{{patient.Name}}
+						</td>
+						<td>
+							<span class="image-text ml-2">{{patient.AbhaAddress}}</span>
+						</td>
+						<td>
+							<span class="image-text ml-2">{{patient.ConsentStatus}}</span>
+						</td>
+						<td>
+							{{patient.ConsentCreatedOn | date: 'MM/dd/yyyy'}}
+						</td>
+						<td>
+							{{patient.ConsentGrantedOn | date: 'MM/dd/yyyy'}}
+						</td>
+						<td>
+							{{patient.ConsentExpiryOn | date: 'MM/dd/yyyy'}}
+						</td>
+						<td>
+							{{patient.ConsentRevokedOn | date: 'MM/dd/yyyy'}}
+						</td>
+						<td class="text-center">
+							<i class="pi pi-ellipsis-v" (click)="menu.toggle($event)"></i>
+						</td>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="emptymessage">
+					<tr>
+						<td colspan="8">No Consent found.</td>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="loadingbody">
+					<tr>
+						<td colspan="8">Loading patients consent data. Please wait.</td>
+					</tr>
+				</ng-template>
+    		</p-table>
+        </div>
+    </div>
+</div>
+
+<p-menu #menu [model]="items" [popup]="true"></p-menu>
+
+<div class=" flex justify-content-center" *ngIf="visible">
+    <p-dialog header="Request Consent" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }">
+        <ng-template pTemplate="content" [formGroup]="ConsentForm">
+            <div class="p-formgrid grid">
+                <div class="field p-fluid col-4">
+                    <label>Patient HealthId:</label>
+                    <input pInputText  type="text" formControlName="PatientId"/>
+                </div>
+                <div class="field p-fluid col-4">
+                    <label>Name</label>
+                    <input pInputText  type="text" formControlName="Name"/>
+                </div>
+                <div class="field p-fluid col-4">
+                    <label>Purpose:</label>
+                    <p-dropdown [options]="purposeList"  appendTo="body" formControlName="Purpose" [showClear]="true" placeholder="Select purpose"></p-dropdown>
+                </div>
+            </div>
+            <div class="p-formgrid grid">
+                <div class="field p-fluid col-6">
+                    <label>From:</label>
+                    <p-calendar formControlName="From" appendTo="body" [showIcon]="true"></p-calendar>
+                </div>
+                <div class="field p-fluid col-6">
+                    <label>To:</label>
+                    <p-calendar formControlName="To" appendTo="body" [showIcon]="true"></p-calendar>
+                </div>
+            </div>
+            <div class="p-formgrid grid">
+                <div class="field p-fluid col-6">
+                    <label>Hi Types:</label>
+                    <p-multiSelect [options]="HiTypesList" [showHeader] = "false" [showToggleAll] = "false" appendTo="body" formControlName="HiTypes" [filter]="false" [selectAll]="false"></p-multiSelect>
+                </div>
+                <div class="field p-fluid col-6">
+                    <label>Data Erase At:</label>
+                    <p-calendar formControlName="DataEraseAt" appendTo="body" [showIcon]="true"></p-calendar>
+                </div>
+            </div>
+            
+        </ng-template>
+        <ng-template pTemplate="footer">
+            <ng-container >
+                <p-button label="Cancel" [outlined]="true"></p-button>
+                <p-button label="Request Consent"></p-button>
+            </ng-container>
+        </ng-template>
+    </p-dialog>
+</div>

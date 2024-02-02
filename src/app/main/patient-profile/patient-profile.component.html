@@ -1,0 +1,56 @@
+<div class="grid">
+    <div class="col-12 md:col-12">
+        <div class="card">
+            <div class="flex justify-content-between">
+                <h3>Patient Profile</h3>
+                <div class="flex justify-content-end">
+                    <p-button class="mr-2" label="Diagnostic Report" [outlined]="true" severity="secondary" (click)="addDiagnositReport()"></p-button>
+                    <p-button label="OP Consultation Note" class="mr-2" [outlined]="true" severity="secondary" (click) ="addOpConsultation()"></p-button>
+                    <p-button class="mr-2" label="Discharge Summary" [outlined]="true" severity="secondary" (click) = "addDischargeSummary()"></p-button>
+                    <p-button label="Prescription" [outlined]="true" severity="secondary"></p-button>
+                </div>
+            </div>
+            <hr style="margin-bottom: 40px;">
+            <div class="mt-6">
+				<div class="p-formgrid grid">
+					<div class="field p-fluid col-3">	
+						<h4 class="text-margin">First Name:</h4>
+						<h5 class="text-margin">{{patient.Name}}</h5>
+					</div>
+					<div class="field p-fluid col-3">
+						<h4 class="text-margin">HealthId:</h4>
+						<h5 class="text-margin">{{patient.HealthId}}</h5>
+					</div>
+					<div class="field p-fluid col-3">
+						<h4 class="text-margin">DateOfBirth</h4>
+						<h5 class="text-margin">{{patient.DateOfBirth | date: 'MM/dd/yyyy'}}</h5>
+					</div>
+					<div class="field p-fluid col-3">
+						<h4 class="text-margin">Gender:</h4>
+						<h5 class="text-margin">{{patient.Gender}}</h5>
+					</div>
+				</div>
+				<div class="p-formgrid grid">
+					<div class="field p-fluid col-3">	
+						<h4 class="text-margin">VisitType:</h4>
+						<h5 class="text-margin">{{patient.VisitType}}</h5>
+					</div>
+					<div class="field p-fluid col-3">
+						<h4 class="text-margin">Mobile:</h4>
+						<h5 class="text-margin">{{patient.Mobile}}</h5>
+					</div>
+					<div class="field p-fluid col-3">
+						<h4 class="text-margin">Registration Date and Time:</h4>
+						<h5 class="text-margin">{{patient.RegistrationDateandTime | date: 'MM/dd/yyyy'}}</h5>
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+</div>
+
+
+<div class=" flex justify-content-center" >
+   <router-outlet></router-outlet>
+</div>
+

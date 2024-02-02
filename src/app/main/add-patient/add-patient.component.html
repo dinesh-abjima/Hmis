@@ -1,0 +1,130 @@
+<div>
+	<div class="card">
+		<div class="flex justify-content-between mb-4">
+			<h3>New Patient</h3>
+			<p-button label="" icon="pi pi-arrow-left" [outlined]="true"/>
+		</div>
+		<div>
+			<div [formGroup]="healthIdForm">
+				<div class="p-formgrid grid">
+					<div class="field p-fluid col-4">
+						<label>Health Id:</label>
+						<p-autoComplete formControlName="HealthId" [suggestions]="filteredHealthIds" (completeMethod)="filterHealthId($event)" field="Value"></p-autoComplete>
+					</div>
+					<div class="field p-fluid col-2 flex align-items-end" *ngIf="sendOtpVisible">
+						<p-button label="Send Otp"  [outlined]="true" (click) = "sendOtp()"></p-button>
+					</div>
+				</div> 
+			</div>
+			<hr style="margin-bottom: 40px; border: 1px solid black;">
+
+			<div [formGroup]="patientForm">
+				<div class="p-formgrid grid">
+					<div class="field p-fluid col-4">	
+						<label>First Name:</label>
+						<input pInputText  type="text" formControlName="FirstName"/>
+					</div>
+					<div class="field p-fluid col-4">
+						<label>Middle Name:</label>
+						<input pInputText  type="text" formControlName="MiddleName"/>
+					</div>
+					<div class="field p-fluid col-4">
+						<label>Last Name:</label>
+						<input pInputText  type="text" formControlName="LastName"/>
+					</div>
+				</div>
+				<div class="p-formgrid grid">
+					<div class="field p-fluid col-3">
+						<label>HealthId:</label>
+						<input pInputText  type="text" formControlName="HealthId"/>
+					</div>
+					<div class="field p-fluid col-3">
+						<label>DateOfBirth:</label>
+						<p-calendar formControlName="DateOfBirth"></p-calendar>
+					</div>
+					<div class="field p-fluid col-3">
+						<label>Gender:</label>
+						<p-dropdown [options]="genderList" formControlName="Gender" [showClear]="true" placeholder="Select Gender"></p-dropdown>
+					</div>
+					<div class="field p-fluid col-3">
+						<label>VisitType:</label>
+						<p-dropdown [options]="visitTypesList" formControlName="VisitType" [showClear]="true" placeholder="Select Visit Type"></p-dropdown>
+					</div>
+				</div>
+				<div class="p-formgrid grid">
+					<div class="field p-fluid col-6">
+						<label>Address1:</label>
+						<input pInputText  type="text" formControlName="Address1"/>
+					</div>
+					<div class="field p-fluid col-6">
+						<label>Address2:</label>
+						<input pInputText  type="text" formControlName="Address2"/>
+					</div>
+				</div>
+				<div class="p-formgrid grid">
+					<div class="field p-fluid col-4">
+						<label>Country:</label>
+						<input pInputText  type="text" formControlName="Country"/>
+					</div>
+					<div class="field p-fluid col-4">
+						<label>State:</label>
+						<input pInputText  type="text" formControlName="State"/>
+					</div>
+					<div class="field p-fluid col-4">
+						<label>City:</label>
+						<input pInputText  type="text" formControlName="City"/>
+					</div>
+				</div>
+				<div class="p-formgrid grid">
+					<div class="field p-fluid col-4">
+						<label>Zip:</label>
+						<input pInputText  type="text" formControlName="Zip"/>
+					</div>
+					<div class="field p-fluid col-4">
+						<label>Tel1:</label>
+						<input pInputText  type="text" formControlName="Tel1"/>
+					</div>
+					<div class="field p-fluid col-4">
+						<label>Tel2:</label>
+						<input pInputText  type="text" formControlName="Tel2"/>
+					</div>
+				</div>
+				<div class="p-formgrid grid">
+					<div class="field p-fluid col-4">
+						<label>Ext1:</label>
+						<input pInputText  type="text" formControlName="Ext1"/>
+					</div>
+					<div class="field p-fluid col-4">
+						<label>Fax:</label>
+						<input pInputText  type="text" formControlName="Fax"/>
+					</div>
+					<div class="field p-fluid col-4">
+						<label>Email:</label>
+						<input pInputText  type="text" formControlName="Email"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="flex justify-content-end">
+			<p-button label="Cancel" class="mr-2" [outlined]="true"></p-button>
+			<p-button label="Submit"></p-button>
+		</div>
+	</div>
+
+	<div class="card flex justify-content-center" *ngIf="verifyOtpVisible">
+		<p-dialog header="Verify OTP" [(visible)]="verifyOtpVisible" [modal]="true" [style]="{ width: '50vw' }" [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }">
+			<ng-template pTemplate="content" [formGroup]="healthIdOtpForm">
+				<div class="field p-fluid col-12">
+					<label>OTP:</label>
+					<input pInputText  type="number" formControlName="Otp"/>
+				</div>
+			</ng-template>
+			<ng-template pTemplate="footer">
+				<ng-container >
+					<p-button label="Cancel" [outlined]="true"></p-button>
+					<p-button label="Verify Otp" (click) = "VerifyOtp()"></p-button>
+				</ng-container>
+			</ng-template>
+		</p-dialog>
+	</div>
+</div>

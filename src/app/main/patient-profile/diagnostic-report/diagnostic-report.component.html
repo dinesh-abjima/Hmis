@@ -1,0 +1,55 @@
+<p-dialog header="Diagnostic Report" [visible]="true"  [modal]="true" [style]="{ width: '50vw' }" [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }">
+    <ng-template pTemplate="content">
+        <div [formGroup]="DiagnosticReportForm">
+            <div class="p-formgrid grid">
+                <div class="field p-fluid col-6">
+                    <label>Report Type :</label>
+                    <div class="flex ">
+                        <div class="flex flex-wrap gap-3 " *ngFor="let category of reportTypes" class="field-checkbox">
+                            <div class="flex align-items-center mr-2">
+                                <p-radioButton [inputId]="category" value={{category}} formControlName="ReportType" ></p-radioButton>
+                                <label [for]="category" class="ml-2">{{category}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field p-fluid col-6">
+                    <label>Report Category:</label>
+                    <input pInputText  type="text" formControlName="ReportCategory"/>
+                </div>
+            </div>
+            <div  class="p-formgrid grid">
+                <div class="field p-fluid col-6" *ngIf="DiagnosticReportForm.value.ReportType=='Lab'">
+                    <label>Laboratory Test Name</label>
+                    <input pInputText  type="text" formControlName="LaboratoryTestName"/>
+                </div>
+                <div class="field p-fluid col-6" *ngIf="DiagnosticReportForm.value.ReportType=='Imaging'">
+                    <label>Radiology Test Name</label>
+                    <input pInputText  type="text" formControlName="RadiologyTestName"/>
+                </div>
+                <div class="field p-fluid col-6">
+                    <label>Report Created Date</label>
+                    <p-calendar appendTo="body" [showIcon]="true" formControlName="ReportCreatedDate"></p-calendar>
+                </div>
+            </div>
+            <div  class="p-formgrid grid">
+                <div class="field p-fluid col-12">
+                    <label>Report Conclusion</label>
+                    <textarea rows="3" cols="30" pInputTextarea formControlName = "ReportConclusion"></textarea>
+                </div>
+            </div>
+            <div class="p-formgrid grid">
+                <div class="field p-fluid col-12">
+                    <label style="display: block;">Uploaded File</label>
+                    <input pInputText  type="file"/>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <div class="flex justify-content-end">
+            <p-button label="Cancel" class="mr-2" [outlined]="true"></p-button>
+            <p-button label="Submit"></p-button>
+        </div>
+    </ng-template>
+</p-dialog>

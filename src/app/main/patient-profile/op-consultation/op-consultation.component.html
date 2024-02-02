@@ -1,0 +1,82 @@
+<p-dialog header="OP Consultation Note" [visible]="true"  [modal]="true" [style]="{ width: '50vw' }" [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }">
+    <ng-template pTemplate="content">
+        <div class="flex justify-content-center">
+            <div class="flex flex-wrap gap-3 " *ngFor="let category of categoryTypes" class="field-checkbox">
+                <div class="flex align-items-center mr-2">
+                    <p-radioButton [inputId]="category" value={{category}} [(ngModel)] = "selectedCategory"></p-radioButton>
+                    <label [for]="category" class="ml-2">{{category}}</label>
+                </div>
+            </div>
+        </div>
+        <div [formGroup]="opConsultationEntryForm" *ngIf="selectedCategory=='Online Entry'">
+            <div class="p-formgrid grid">
+                <div class="field p-fluid col-12">
+                    <label>Allergy :</label>
+                    <textarea rows="2" cols="30" pInputTextarea formControlName = "Allergy"></textarea>
+                </div>
+            </div>
+            <div class="p-formgrid grid">
+                <div class="field p-fluid col-12">
+                    <label>History :</label>
+                    <textarea rows="2" cols="30" pInputTextarea formControlName = "History"></textarea>
+                </div>
+            </div>
+            <div class="p-formgrid grid">
+                <div class="field p-fluid col-12">
+                    <label>Symptoms :</label>
+                    <textarea rows="2" cols="30" pInputTextarea formControlName = "Symptoms"></textarea>
+                </div>
+            </div>
+            <div class="p-formgrid grid">
+                <div class="field p-fluid col-12">
+                    <label>Observations / Vitals :</label>
+                    <textarea rows="2" cols="30" pInputTextarea formControlName = "Observations"></textarea>
+                </div>
+            </div>
+            <div class="p-formgrid grid">
+                <div class="field p-fluid col-12">
+                    <label>Diagnosis :</label>
+                    <textarea rows="2" cols="30" pInputTextarea formControlName = "Diagnosis"></textarea>
+                </div>
+            </div>
+            <div class="p-formgrid grid">
+                <div class="field p-fluid col-12">
+                    <label>Treatment Plan :</label>
+                    <textarea rows="2" cols="30" pInputTextarea formControlName = "TreatmentPlan"></textarea>
+                </div>
+            </div>
+            <div class="p-formgrid grid">
+                <div class="field p-fluid col-12">
+                    <label>Prescription :</label>
+                    <textarea rows="2" cols="30" pInputTextarea formControlName = "Prescription"></textarea>
+                </div>
+            </div>
+            <div class="p-formgrid grid">
+                <div class="field p-fluid col-12">
+                    <label>Follow Up Date :</label>
+                    <p-calendar appendTo="body" [showIcon]="true" formControlName="FollowUpDate"></p-calendar>
+                </div>
+            </div>
+        </div>
+        <div  [formGroup]="opConsultationScannedForm" *ngIf="selectedCategory=='Upload scanned OP Consultation Note'">
+            <div class="p-formgrid grid">
+                <div class="field p-fluid col-12">
+                    <label>Notes :</label>
+                    <textarea rows="2" cols="30" pInputTextarea formControlName = "Notes"></textarea>
+                </div>
+            </div>
+            <div class="p-formgrid grid">
+                <div class="field p-fluid col-12">
+                    <label style="display: block;">Uploaded File</label>
+                    <input pInputText  type="file" />
+                </div>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <div class="flex justify-content-end pt-2">
+            <p-button label="Cancel" class="mr-2" [outlined]="true"></p-button>
+            <p-button label="Submit"></p-button>
+        </div>
+    </ng-template>
+</p-dialog>
