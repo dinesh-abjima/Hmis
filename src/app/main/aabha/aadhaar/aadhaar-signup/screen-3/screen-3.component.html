@@ -1,0 +1,29 @@
+  <div>
+    <div class="card">
+      <div class="flex justify-content-between " style="margin-left: 10%;">
+        <form [formGroup]="form">
+          <div class="p-formgrid grid">
+            <div class="field col-100" style="width: 100%;">	
+              <label>OTP</label><span style="color: red;">*</span><br>
+              <input pInputText  id="otp" type="text" formControlName="otp"/><br>
+              <span *ngIf="!form.get('otp')?.valid && form.get('otp')?.touched">
+                <span *ngIf="form.get('otp')?.errors?.['required']">*This field is required.</span>
+                <span *ngIf="form.get('otp')?.errors?.['maxLength']">*This is invalid.</span>
+                </span>
+                <br>
+              <div style="text-align: right;">
+              <p [ngStyle]="{ color: 'var(--highlight-text-color)'}">Resend OTP</p>
+              </div>
+  
+              <div class="btn">
+              <p-button [style]="{ width: '40vw' }" label="Verify"  (click) = "verify($event)"></p-button>
+              </div>
+              
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  

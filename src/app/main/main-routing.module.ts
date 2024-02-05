@@ -54,7 +54,8 @@ const routes: Routes = [
       {
         path : 'aabha' , 
         loadChildren : ()=> import("./aabha/aabha.module").then(m => m.AabhaModule)
-      }
+      },
+
     ]
   },
 ];

@@ -17,6 +17,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { FileUploadModule } from 'primeng/fileupload';
 import { FormsModule } from '@angular/forms';
+import { CardModule } from 'primeng/card';
 
 @NgModule({
   declarations: [],
@@ -38,7 +39,9 @@ import { FormsModule } from '@angular/forms';
     MultiSelectModule,
     InputTextareaModule,
     FileUploadModule,
-    FormsModule
+    FormsModule,
+    CardModule
+    
   ],
   exports:[
     SidebarModule,
@@ -57,7 +60,8 @@ import { FormsModule } from '@angular/forms';
     MultiSelectModule,
     InputTextareaModule,
     FileUploadModule,
-    FormsModule
+    FormsModule,
+    CardModule
   ]
 })
 export class ComponentModule { }

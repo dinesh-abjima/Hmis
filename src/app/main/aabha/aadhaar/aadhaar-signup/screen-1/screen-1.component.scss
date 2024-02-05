@@ -1,0 +1,27 @@
+input.ng-invalid.ng-touched{
+    border: 2px solid red;
+}
+span{
+    color: red;
+}
+.card{
+    width:60vw;
+    height: 50vh;
+    margin: 50px 50px
+}
+.flex{
+    margin-top: 10%
+}
+.btn{
+    margin-left: 5%
+}
+/* Order */
+@layer reset, primeng;
+ 
+/* Reset CSS */
+@layer reset {
+    
+    input {
+        width: 50vw;
+    }
+}

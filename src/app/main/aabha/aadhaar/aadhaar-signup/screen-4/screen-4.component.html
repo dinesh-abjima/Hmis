@@ -1,0 +1,31 @@
+  <div>
+    <div class="card">
+      <div class="flex justify-content-between " style="margin-left: 10%;">
+        <form [formGroup]="form">
+          <div class="p-formgrid grid">
+            <div class="field col-100" style="width: 100%;">	
+              <label>Select any Aabha address</label><span style="color: red;">*</span><br>
+
+              <p-dropdown [style]="{ width: '50vw' }" [options]="addList" formControlName="addList" [showClear]="true" placeholder="Select Address"></p-dropdown>
+              <span *ngIf="!form.get('selectedOption')?.valid && form.get('selectedOption')?.touched">
+                <span *ngIf="form.get('selectedOption')?.errors?.['required']">*This field is required.</span>
+
+                </span>
+              
+                <br>
+              <div style="text-align: right;">
+              <p [ngStyle]="{ color: 'var(--highlight-text-color)'}">Resend OTP</p>
+              </div>
+  
+              <div class="btn">
+              <p-button [style]="{ width: '40vw' }" label="Verify"  (click) = "verify()"></p-button>
+              </div>
+              
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  

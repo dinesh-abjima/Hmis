@@ -1,0 +1,28 @@
+<div>
+	<div class="card">
+		<div class="flex justify-content-between " style="margin-left: 10%;">
+			<form [formGroup]="aadharForm">
+				<div class="p-formgrid grid">
+					<div class="field col-100" style="width: 100%;">	
+						<label>Aadhar Number</label><span style="color: red;">*</span><br>
+						<input pInputText  id="aadharNumber" type="text" formControlName="aadharNumber"/><br>
+						<span *ngIf="!aadharForm.get('aadharNumber')?.valid && aadharForm.get('aadharNumber')?.touched">
+							<span *ngIf="aadharForm.get('aadharNumber')?.errors?.['required']">*This field is required.</span>
+							<span *ngIf="aadharForm.get('aadharNumber')?.errors?.['maxLength']">*This is invalid.</span>
+						  </span>
+						  <br>
+						<div style="text-align: right;">
+						<p [ngStyle]="{ color: 'var(--highlight-text-color)'}">Use mobile</p>
+						</div>
+
+						<div class="btn">
+						<p-button [style]="{ width: '40vw' }" label="Send OTP"  (click) = "sendOTP()"></p-button>
+						</div>
+						
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
