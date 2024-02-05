@@ -20,13 +20,8 @@ export class Screen3Component {
  
   ngOnInit(): void {
    
-
-    // this.initForm();
-    // const id = this.route.snapshot.params.id;
-    // const formData = this.dataService.getFormDataById(id);
-    // this.form.patchValue(formData);
     this.initForm();
-      const id = this.route.snapshot.params['id']!; // Use ['id'] and ! operator
+      const id = this.route.snapshot.params['id']!; 
       const formData = this.dataService.getFormDataById(id);
       this.form.patchValue(formData ?? {});
   }
