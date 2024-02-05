@@ -1,0 +1,17 @@
+<div class="card m-8" borderRadius="2em" [style]="{ width: '60vw'}">
+    <div class="flex justify-content-between m-6">
+        <div [formGroup]="secondForm" class="gap-4">
+            <div class="p-formgrid grid">
+                <div class="field p-fluid col-4">
+                    <label>Enter OTP<span>*</span></label>
+                    <input pInputText type="text" formControlName="otp" />
+                    <div class="btn">
+                        <p-button class="m-2" label="Send OTP" (click)="verifyOTP()"
+                            [style]="{ width: '30vw'}"></p-button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

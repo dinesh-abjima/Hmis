@@ -1,0 +1,52 @@
+<div class="card m-8" borderRadius="2em" [style]="{ width: '60vw'}">
+    <div class="flex justify-content-between m-6">
+        <div [formGroup]="myForm" class="gap-4">
+
+            <div class="p-formgrid grid">
+                <!--Name -->
+                <div class="field p-fluid col-12">
+                    <label>Name<span>*</span></label>
+                    <input pInputText type="text" formControlName="name" />
+                </div>
+                <!--Dob-->
+                <div class="field p-fluid col-12">
+                    <label>DateOfBirth<span>*</span></label>
+                    <p-calendar formControlName="dob"[showIcon]="true"></p-calendar>
+                </div>
+                <!--HealthId-->
+                <div class="field p-fluid col-12">
+                    <label>Health Id<span>*</span></label>
+                    <p-dropdown [options]="healthId" formControlName="healthid" [showClear]="true"
+                        placeholder="Select Health Id"></p-dropdown>
+                </div>
+                <!--Gender-->
+                <div class="field p-fluid col-12 form-group">
+                    <label>Gender<span>*</span></label>
+                    <!--Radio Buttons-->
+                    <div class="flex flex-wrap gap-3">
+                        <div class="flex align-items-center">
+                            <p-radioButton name="gender" value="Male" formControlName="gender"></p-radioButton>
+                            <label for="Male" class="ml-2">Male</label>
+                        </div>
+
+                        <div class="flex align-items-center">
+                            <p-radioButton name="gender" value="Female" formControlName="gender"></p-radioButton>
+                            <label for="Female" class="ml-2">Female</label>
+                        </div>
+
+                    </div>
+                    <!--done button -->
+                    <div class="btn">
+                        <p-button class="m-2" label="Submit" [style]="{ width: '30vw'}" (click)="onSubmit()"></p-button>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+  

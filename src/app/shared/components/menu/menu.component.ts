@@ -40,7 +40,7 @@ export class MenuComponent {
                             label : 'Use Aadhar', icon : 'pi pi-fw pi-home', routerLink : ['/main/aabha/aadhaar-signin']
                           },
                           {
-                            label : 'Use Mobile' , icon : 'pi pi-fw pi-home', routerLink : ['//main/aabha/mobile-signin']
+                            label : 'Use Mobile' , icon : 'pi pi-fw pi-home', routerLink : ['/main/aabha/mobile-signup']
                           }
                         ]
                       }

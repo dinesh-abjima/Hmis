@@ -1,0 +1,20 @@
+/* Order */
+@layer reset, primeng;
+ 
+/* Reset CSS */
+@layer reset {
+    button,
+    input {
+        width: 50vw;
+        margin-bottom: 20%;
+    }
+}
+.btn{
+    margin-left: 60%;
+}
+span{
+    color: red;
+}
+input.ng-invalid.ng-touched{
+    border: 2px solid red;
+}
