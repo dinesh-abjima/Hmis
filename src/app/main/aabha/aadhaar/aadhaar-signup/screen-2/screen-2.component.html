@@ -1,8 +1,11 @@
   <div>
     <div class="card">
+      <p style="margin-left: 8%;">We've sent otp to {{Aadhar}} </p>
       <div class="flex justify-content-between " style="margin-left: 10%;">
+      
         <form [formGroup]="form">
           <div class="p-formgrid grid">
+            <p></p>
             <div class="field col-100" style="width: 100%;">	
               <label>OTP</label><span style="color: red;">*</span><br>
               <input pInputText  id="otp" type="text" formControlName="otp"/><br>
@@ -16,7 +19,7 @@
               </div>
 
               <label>Mobile Number</label><span style="color: red;">*</span><br>
-              <input pInputText  id="mobileNumber" type="text" formControlName="mobileNumber"/><br>
+              <input pInputText  id="mobileNumber" type="text" formControlName="mobileNumber" value="mn"/><br>
               <span *ngIf="!form.get('mobileNumber')?.valid && form.get('mobileNumber')?.touched">
                 <span *ngIf="form.get('mobileNumber')?.errors?.['required']">*This field is required.</span>
                 <span *ngIf="form.get('mobileNumber')?.errors?.['pattern']">*This is invalid.</span>

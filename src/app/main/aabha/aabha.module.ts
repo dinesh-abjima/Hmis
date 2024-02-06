@@ -11,7 +11,7 @@ import { Screen1Component } from './aadhaar/aadhaar-signup/screen-1/screen-1.com
 import { Screen2Component } from './aadhaar/aadhaar-signup/screen-2/screen-2.component';
 import { Screen3Component } from './aadhaar/aadhaar-signup/screen-3/screen-3.component';
 import { Screen4Component } from './aadhaar/aadhaar-signup/screen-4/screen-4.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
 
@@ -29,7 +29,8 @@ const routes: Routes = [
     CommonModule,
     AabhaRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   
 
     

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../../service/data.service';
+import { state } from '@angular/animations';
 
 @Component({
   selector: 'nous-screen-1',
@@ -29,6 +30,7 @@ export class Screen1Component {
       const aadharNumber = this.aadharForm.value.aadharNumber;
       const formData = { id: '1', aadharNumber, otp: '', mobileNumber: '' };
       this.dataService.addFormData(formData);
+      console.log(formData)
       this.router.navigate(['../screen-2', formData.id], { relativeTo: this.route });
     }
     }

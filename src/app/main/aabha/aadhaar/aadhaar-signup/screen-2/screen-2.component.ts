@@ -11,8 +11,9 @@ import { DataService } from '../../service/data.service';
 export class Screen2Component {
   id: string | null;
   form: FormGroup;
-  staticOtp: string = '';
+  Aadhar: any;
  
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -22,27 +23,50 @@ export class Screen2Component {
  
   ngOnInit(): void {
 
-    // this.id = this.route.snapshot.params['id']; 
+ 
     this.id = this.route.snapshot.paramMap.get('id');
     this.form = this.fb.group({
       mobileNumber: ['', [Validators.required,Validators.pattern('[7-9]{1}[0-9]{9}')]],
       otp: ['',[Validators.required, Validators.pattern('[0-9]{6}')]],
+
     });
+    const formData = this.getDataFromService();
+    this.Aadhar = formData?.aadharNumber;
+    console.log(this.Aadhar)
+    // console.log(this.form.patchValue({'aadharNumber': 'aadhar'}))
+
+
   }
  
 
 onVerify(): void {
+
+
   if (this.form.valid) {
     const enteredOtp = this.form.value.otp;
+    const mobileNum = this.form.value.mobileNumber;
+    this.dataService.setmobileNumber(mobileNum);
+  //  const mobile = this.dataService.getmobileNumber();
+  //  console.log(mobile);
+  //  console.log(mobileNum)
+   
     this.dataService.addFormData({
       id: this.id,
-      mobileNumber: this.form.value.mobileNumber,
-      otp: enteredOtp,
+      otp: enteredOtp,    
     });
- 
+   
     this.router.navigate(['../screen-3', this.id], { relativeTo: this.route });
+
+ 
   }
+ 
   
+}
+getDataFromService(): any {
+  const id = this.route.snapshot.paramMap.get('id') ?? '';
+  const formData = this.dataService.getFormDataById(id);
+  return formData;
 }
 
   }
+

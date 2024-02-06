@@ -40,7 +40,8 @@ export class Screen4Component {
   verify(): void {
     const formData = this.getDataFromService();
     console.log('Aadhar Number:', formData?.aadharNumber);
-    console.log('Mobile Number:', formData?.mobileNumber);
+    const mobileNumber =this.dataService.getmobileNumber()
+    console.log('Mobile Number:', mobileNumber);
     console.log('Selected Option:', this.form.value.addList);
     console.log(formData)
   }

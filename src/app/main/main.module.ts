@@ -34,7 +34,7 @@ import { AppointmentComponent } from './appointment/appointment.component';
     CommonModule,
     SharedModule,
     MainRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class MainModule { }
